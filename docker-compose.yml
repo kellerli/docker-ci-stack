@@ -1,0 +1,25 @@
+nexus:
+  build: ./nexus
+  ports:
+    - "18081:8081"
+
+jenkins:
+  build: ./jenkins
+  ports:
+    - "18080:8080"
+  links:
+    - nexus:nexus
+    - sonar:sonar
+sonar:
+  build: ./sonar
+  ports:
+   - "19000:9000"
+   - "5432:5432"
+  environment:
+   - SONARQUBE_JDBC_URL=jdbc:postgresql://localhost:5432/sonar
+db:
+  image: postgres
+  net: container:sonar
+  environment:
+   - POSTGRES_USER=sonar
+   - POSTGRES_PASSWORD=sonar
