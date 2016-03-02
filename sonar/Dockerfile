@@ -24,7 +24,10 @@ ENV SONAR_DOWNLOAD_URL https://sonarsource.bintray.com/Distribution
 #      Key fingerprint = F118 2E81 C792 9289 21DB  CAB4 CFCA 4A29 D264 68DE
 # uid       [ unknown] sonarsource_deployer (Sonarsource Deployer) <infra@sonarsource.com>
 # sub   2048R/06855C1D 2015-05-25
-RUN gpg --keyserver ha.pool.sks-keyservers.net --recv-keys F1182E81C792928921DBCAB4CFCA4A29D26468DE
+# RUN gpg --keyserver-options http-proxy=http://10.26.221.11:3128 --keyserver ha.pool.sks-keyservers.net --recv-keys F1182E81C792928921DBCAB4CFCA4A29D26468DE
+
+COPY sonar-key.asc 10gen-gpg-key.asc
+RUN  gpg --import 10gen-gpg-key.asc
 
 RUN set -x \
 	&& cd /opt \
@@ -34,6 +37,7 @@ RUN set -x \
 	&& unzip sonarqube.zip \
 	&& mv sonarqube-$SONAR_VERSION sonarqube \
   && rm sonarqube.zip* \
+  && ls $SONARQUBE_HOME/ \
 	&& rm -rf $SONARQUBE_HOME/bin/*
 
 # Installing Plugins
