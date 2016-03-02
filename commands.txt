@@ -1,0 +1,10 @@
+# useful commands ::
+
+# list all containers
+ docker ps -q -a
+
+# delete all containers
+ docker ps -q -a | xargs docker rm
+
+# delete unsed images
+ docker rmi $(docker images | grep "^<none>" | awk '{print $3}')
