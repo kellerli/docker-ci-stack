@@ -29,7 +29,7 @@ postgresql:
   volumes:
     - /var/docker/volumes/postgresql:/var/lib/postgresql
 gitlab:
-  image: sameersbn/gitlab:latest
+  image: sameersbn/gitlab:8.5.1
   links:
     - redis:redisio
     - postgresql:postgresql
