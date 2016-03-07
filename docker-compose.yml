@@ -1,17 +1,21 @@
 nexus:
   build: ./nexus
+  container_name: nexus
   ports:
     - "18081:8081"
 
 jenkins:
   build: ./jenkins
+  container_name: jenkins
   ports:
     - "18080:8080"
   links:
     - nexus:nexus
     - sonar:sonar
+    - gitlab:gitlab
 sonar:
   build: ./sonar
+  container_name: sonar
   ports:
    - "19000:9000"
    - "5432:5432"
@@ -30,6 +34,7 @@ postgresql:
     - /var/docker/volumes/postgresql:/var/lib/postgresql
 gitlab:
   image: sameersbn/gitlab:8.5.1
+  container_name: gitlab
   links:
     - redis:redisio
     - postgresql:postgresql
