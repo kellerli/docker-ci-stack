@@ -13,6 +13,8 @@ jenkins:
     - nexus:nexus
     - sonar:sonar
     - gitlab:gitlab
+  volumes:
+    - /var/docker/volumes/jenkins_home:/var/jenkins_home:Z
 sonar:
   build: ./sonar
   container_name: sonar
