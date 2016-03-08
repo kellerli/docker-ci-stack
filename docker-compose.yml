@@ -35,7 +35,7 @@ postgresql:
   volumes:
     - /var/docker/volumes/postgresql:/var/lib/postgresql
 gitlab:
-  image: sameersbn/gitlab:8.5.1
+  build: ./gitlab
   container_name: gitlab
   links:
     - redis:redisio
@@ -53,7 +53,7 @@ gitlab:
 
     - GITLAB_SECRETS_DB_KEY_BASE=long-and-random-alphanumeric-string
 
-    - GITLAB_HOST=localhost
+    - GITLAB_HOST=192.168.99.100
     - GITLAB_PORT=10080
     - GITLAB_SSH_PORT=10022
 
