@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<org.jenkinsci.plugins.configfiles.maven.DefaultGlobalMavenSettingsProvider plugin="config-file-provider@2.10.0">
+  <configs>
+    <entry>
+      <string>org.jenkinsci.plugins.configfiles.maven.GlobalMavenSettingsConfig1435422191538</string>
+      <org.jenkinsci.plugins.configfiles.maven.GlobalMavenSettingsConfig>
+        <id>org.jenkinsci.plugins.configfiles.maven.GlobalMavenSettingsConfig1435422191538</id>
+        <name>MyGlobalSettings</name>
+        <comment>global settings</comment>
+        <content><?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?>
+<settings xmlns=&quot;http://maven.apache.org/SETTINGS/1.1.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd&quot;>
+  <mirrors>
+    <mirror>
+      <!--This sends everything else to /public -->
+      <id>nexus</id>
+      <mirrorOf>*</mirrorOf>
+      <url>http://${DOCKERCITOOLSTACK_NEXUS_1_PORT_8081_TCP_ADDR}:8081/nexus/content/groups/public</url>
+    </mirror>
+  </mirrors>
+  <servers>
+      <server>
+        <id>nexus-release-repository</id>
+        <username>admin</username>
+        <password>admin123</password>
+      </server>
+    </servers>
+    <profiles>
+      <profile>
+          <id>sonar</id>
+          <activation>
+              <activeByDefault>true</activeByDefault>
+          </activation>
+          <properties>
+              <!--<sonar.jdbc.url>
+                jdbc:postgresql://${SONAR_PORT_5432_TCP_ADDR}:${DOCKERCITOOLSTACK_SONAR_1_PORT_5432_TCP_PORT}/sonar
+              </sonar.jdbc.url>
+              <sonar.jdbc.username>sonar</sonar.jdbc.username>
+              <sonar.jdbc.password>sonar</sonar.jdbc.password> -->
+              <!-- Optional URL to server. Default value is http://localhost:9000 -->
+              <sonar.host.url>http://${SONAR_PORT_5432_TCP_ADDR}:${SONAR_PORT_9000_TCP_PORT}</sonar.host.url>
+          </properties>
+      </profile>
+      <profile>
+      <id>nexus</id>
+      <!--Enable snapshots for the built in central repo to direct -->
+      <!--all requests to nexus via the mirror -->
+      <repositories>
+        <repository>
+          <id>central</id>
+          <url>http://central</url>
+          <releases><enabled>true</enabled></releases>
+          <snapshots><enabled>true</enabled></snapshots>
+        </repository>
+      </repositories>
+     <pluginRepositories>
+        <pluginRepository>
+          <id>central</id>
+          <url>http://central</url>
+          <releases><enabled>true</enabled></releases>
+          <snapshots><enabled>true</enabled></snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+  </profiles>
+  <activeProfiles>
+    <!--make the profile active all the time -->
+    <activeProfile>nexus</activeProfile>
+  </activeProfiles>
+</settings>
+</content>
+        <serverCredentialMappings/>
+        <isReplaceAll>true</isReplaceAll>
+      </org.jenkinsci.plugins.configfiles.maven.GlobalMavenSettingsConfig>
+    </entry>
+  </configs>
+</org.jenkinsci.plugins.configfiles.maven.DefaultGlobalMavenSettingsProvider>
