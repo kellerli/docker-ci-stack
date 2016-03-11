@@ -54,7 +54,6 @@
         <hudson.views.LastDurationColumn/>
         <hudson.views.BuildButtonColumn/>
       </columns>
-      <includeRegex>.*seed-job.*</includeRegex>
       <recurse>false</recurse>
     </listView>
   </views>
