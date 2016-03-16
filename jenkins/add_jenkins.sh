@@ -4,9 +4,9 @@ until $(curl --output /dev/null --silent --head --fail http://${GITLAB_ENV_GITLA
     sleep 5
 done
 # get private token
-authtoken=$(curl  http://${GITLAB_ENV_GITLAB_HOST}:${GITLAB_ENV_GITLAB_PORT}/api/v3/session --data 'login=root&password=rootroot' | sed -e 's/[{}]/''/g' | awk -v RS=',"' -F: '/^private_token/ {print $2}' | sed -e 's/["]/''/g')
+authtoken=$(curl  http://${GITLAB_ENV_GITLAB_HOST}:${GITLAB_ENV_GITLAB_PORT}/api/v3/session --data 'login=root&password=5iveL!fe' | sed -e 's/[{}]/''/g' | awk -v RS=',"' -F: '/^private_token/ {print $2}' | sed -e 's/["]/''/g')
 
- jenkins_exist=$(curl --header "PRIVATE-TOKEN: $authtoken"  -X GET  "http://${GITLAB_ENV_GITLAB_HOST}:${GITLAB_ENV_GITLAB_PORT}/api/v3/users?username=jenkins2")
+ jenkins_exist=$(curl --header "PRIVATE-TOKEN: $authtoken"  -X GET  "http://${GITLAB_ENV_GITLAB_HOST}:${GITLAB_ENV_GITLAB_PORT}/api/v3/users?username=jenkins")
 
 if [ $jenkins_exist != "[]" ]; then
 	printf "JENKINS ALREADY EXSIT!"
