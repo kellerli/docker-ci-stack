@@ -65,7 +65,7 @@ gitlab:
     - GITLAB_INCOMING_EMAIL_ADDRESS=reply@example.com
 
     - GITLAB_BACKUPS=daily
-    - GITLAB_BACKUP_TIME=01:00
+    - GITLAB_BACKUP_TIME=11:58
 
     - SMTP_ENABLED=false
     - SMTP_DOMAIN=www.example.com
@@ -89,3 +89,14 @@ redis:
   image: sameersbn/redis:latest
   volumes:
     - /var/docker/volumes/gitlab/redis:/var/lib/redis
+nginx:
+  build: .
+  container_name: nginx
+  ports:
+    - 5000:5000
+  links:
+    - registry:registry
+
+registry:
+  container_name: registry
+  image: registry
