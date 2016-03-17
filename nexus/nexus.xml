@@ -19,10 +19,6 @@
     <resolveLinks>true</resolveLinks>
   </routing>
   <repositories>
-  	<repository>
-      <id>central-maven2</id>
-      <url>http://central.maven.org/maven2/</url>
-    </repository>
     <repository>
       <id>central</id>
       <name>Central</name>
@@ -48,7 +44,7 @@
         <artifactMaxAge>-1</artifactMaxAge>
         <itemMaxAge>1440</itemMaxAge>
         <cleanseRepositoryMetadata>false</cleanseRepositoryMetadata>
-        <downloadRemoteIndex>true</downloadRemoteIndex>
+        <downloadRemoteIndex>false</downloadRemoteIndex>
         <checksumPolicy>WARN</checksumPolicy>
         <repositoryPolicy>RELEASE</repositoryPolicy>
       </externalConfiguration>
@@ -78,7 +74,7 @@
         <artifactMaxAge>1440</artifactMaxAge>
         <itemMaxAge>1440</itemMaxAge>
         <cleanseRepositoryMetadata>false</cleanseRepositoryMetadata>
-        <downloadRemoteIndex>true</downloadRemoteIndex>
+        <downloadRemoteIndex>false</downloadRemoteIndex>
         <checksumPolicy>WARN</checksumPolicy>
         <repositoryPolicy>SNAPSHOT</repositoryPolicy>
       </externalConfiguration>
@@ -108,7 +104,7 @@
         <artifactMaxAge>1440</artifactMaxAge>
         <itemMaxAge>1440</itemMaxAge>
         <cleanseRepositoryMetadata>false</cleanseRepositoryMetadata>
-        <downloadRemoteIndex>true</downloadRemoteIndex>
+        <downloadRemoteIndex>false</downloadRemoteIndex>
         <checksumPolicy>WARN</checksumPolicy>
         <repositoryPolicy>SNAPSHOT</repositoryPolicy>
       </externalConfiguration>
@@ -134,7 +130,7 @@
         <artifactMaxAge>-1</artifactMaxAge>
         <itemMaxAge>1440</itemMaxAge>
         <cleanseRepositoryMetadata>false</cleanseRepositoryMetadata>
-        <downloadRemoteIndex>true</downloadRemoteIndex>
+        <downloadRemoteIndex>false</downloadRemoteIndex>
         <checksumPolicy>WARN</checksumPolicy>
         <repositoryPolicy>RELEASE</repositoryPolicy>
       </externalConfiguration>
@@ -160,7 +156,7 @@
         <artifactMaxAge>1440</artifactMaxAge>
         <itemMaxAge>1440</itemMaxAge>
         <cleanseRepositoryMetadata>false</cleanseRepositoryMetadata>
-        <downloadRemoteIndex>true</downloadRemoteIndex>
+        <downloadRemoteIndex>false</downloadRemoteIndex>
         <checksumPolicy>WARN</checksumPolicy>
         <repositoryPolicy>SNAPSHOT</repositoryPolicy>
       </externalConfiguration>
@@ -186,7 +182,7 @@
         <artifactMaxAge>-1</artifactMaxAge>
         <itemMaxAge>1440</itemMaxAge>
         <cleanseRepositoryMetadata>false</cleanseRepositoryMetadata>
-        <downloadRemoteIndex>true</downloadRemoteIndex>
+        <downloadRemoteIndex>false</downloadRemoteIndex>
         <checksumPolicy>WARN</checksumPolicy>
         <repositoryPolicy>RELEASE</repositoryPolicy>
       </externalConfiguration>

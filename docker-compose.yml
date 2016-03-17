@@ -14,7 +14,7 @@ jenkins:
     - sonar:sonar
     - gitlab:gitlab
   volumes:
-    - /var/docker/volumes/jenkins_home:/var/jenkins_home:Z
+    - /var/docker/volumes/jenkins_home:/var/jenkins_home
 sonar:
   build: ./sonar
   container_name: sonar
@@ -53,7 +53,7 @@ gitlab:
 
     - GITLAB_SECRETS_DB_KEY_BASE=long-and-random-alphanumeric-string
 
-    - GITLAB_HOST=192.168.99.100
+    - GITLAB_HOST=10.20.14.100
     - GITLAB_PORT=10080
     - GITLAB_SSH_PORT=10022
 
