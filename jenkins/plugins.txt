@@ -27,4 +27,6 @@ cloudbees-folder:5.1
 icon-shim:2.0.2
 authentication-tokens:1.1
 gitlab-plugin:1.1.31
+jquery:1.11.2-0
+dashboard-view:2.9.7
 build-pipeline-plugin:1.5.1

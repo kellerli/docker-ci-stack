@@ -2,13 +2,15 @@ FROM jenkins:1.642.1
 
 USER root
 RUN apt-get update \
-      && apt-get install -y sudo \
+      && apt-get install -y sudo lxc \
       && rm -rf /var/lib/apt/lists/*
 RUN echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
 ADD ./add_jenkins.sh /usr/share/jenkins/create_jenkins_user_in_gitlab.sh
 RUN chmod +x /usr/share/jenkins/create_jenkins_user_in_gitlab.sh \
 	&& chown jenkins:jenkins /usr/share/jenkins/create_jenkins_user_in_gitlab.sh 
 
+ 	
+RUN addgroup --gid 999 docker && gpasswd -a jenkins docker	
 USER jenkins
 
 
@@ -30,4 +32,5 @@ COPY keys/credentials.xml /usr/share/jenkins/ref/credentials.xml
 COPY keys/id_rsa /usr/share/jenkins/ref/.ssh/id_rsa
 COPY keys/id_rsa.pub /usr/share/jenkins/ref/.ssh/id_rsa.pub
 
-CMD /usr/share/jenkins/create_jenkins_user_in_gitlab.sh && /bin/tini -- /usr/local/bin/jenkins.sh 
+
+CMD /bin/tini -- /usr/local/bin/jenkins.sh

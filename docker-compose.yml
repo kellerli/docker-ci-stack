@@ -3,18 +3,22 @@ nexus:
   container_name: nexus
   ports:
     - "18081:8081"
-
 jenkins:
   build: ./jenkins
   container_name: jenkins
+  privileged: true
   ports:
     - "18080:8080"
   links:
     - nexus:nexus
     - sonar:sonar
     - gitlab:gitlab
+    - nginx:nginx
   volumes:
     - /var/docker/volumes/jenkins_home:/var/jenkins_home
+    - /var/run/docker.sock:/var/run/docker.sock
+    - /usr/bin/docker:/usr/bin/docker
+    - /lib/x86_64-linux-gnu/libdevmapper.so.1.02.1:/lib/x86_64-linux-gnu/libdevmapper.so.1.02.1
 sonar:
   build: ./sonar
   container_name: sonar
@@ -53,7 +57,7 @@ gitlab:
 
     - GITLAB_SECRETS_DB_KEY_BASE=long-and-random-alphanumeric-string
 
-    - GITLAB_HOST=10.20.14.100
+    - GITLAB_HOST=192.168.1.18
     - GITLAB_PORT=10080
     - GITLAB_SSH_PORT=10022
 
@@ -90,13 +94,12 @@ redis:
   volumes:
     - /var/docker/volumes/gitlab/redis:/var/lib/redis
 nginx:
-  build: .
+  build: ./nginx
   container_name: nginx
   ports:
-    - 5000:5000
+    - "15000:5000"
   links:
     - registry:registry
-
 registry:
   container_name: registry
-  image: registry
+  image: registry:2.3.1
