@@ -18,7 +18,7 @@ jenkins:
     - /var/docker/volumes/jenkins_home:/var/jenkins_home
     - /var/run/docker.sock:/var/run/docker.sock
     - /usr/bin/docker:/usr/bin/docker
-    - /lib/x86_64-linux-gnu/libdevmapper.so.1.02.1:/lib/x86_64-linux-gnu/libdevmapper.so.1.02.1
+    - /lib/x86_64-linux-gnu/:/lib/x86_64-linux-gnu/
 sonar:
   build: ./sonar
   container_name: sonar
@@ -57,7 +57,7 @@ gitlab:
 
     - GITLAB_SECRETS_DB_KEY_BASE=long-and-random-alphanumeric-string
 
-    - GITLAB_HOST=192.168.1.18
+    - GITLAB_HOST=10.20.14.100
     - GITLAB_PORT=10080
     - GITLAB_SSH_PORT=10022
 
