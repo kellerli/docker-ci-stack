@@ -29,6 +29,7 @@ sonar:
    - SONARQUBE_JDBC_USERNAME=db_user
    - SONARQUBE_JDBC_PASSWORD=db_pass
    - SONARQUBE_JDBC_URL=jdbc:postgresql://localhost:5432/sonar
+   - SONARQUBE_JDBC_MAXWAIT=300000
 postgresql:
   image: sameersbn/postgresql:9.4-3
   net: container:sonar
